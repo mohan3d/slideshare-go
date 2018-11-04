@@ -10,12 +10,12 @@ import (
 // Download downloads html of slideshare page and writes it to a given writer.
 // It returns any error encountered that caused download or write to fail.
 type Downloader interface {
-	Download(w io.Writer, url string) error
+	Fetch(w io.Writer, url string) error
 }
 
 type defaultDownloader struct{}
 
-func (d *defaultDownloader) Download(w io.Writer, url string) error {
+func (d *defaultDownloader) Fetch(w io.Writer, url string) error {
 	resp, err := http.Get(url)
 
 	if err != nil {
