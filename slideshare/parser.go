@@ -11,18 +11,48 @@ import (
 // Images extracts image urls from the given html.
 // It returns a slice of strings and any error encountered that caused the parser to fail.
 type Parser interface {
-	Images(r io.Reader) ([]string, error)
+	Images(r io.Reader, q Quality) ([]string, error)
 }
 
+// Quality represents image quality
+type Quality int
+
 const (
-	slideSelector    = "img.slide_image"
-	imageURLSelector = "data-full"
+	// QualityFull best quality.
+	QualityFull Quality = iota + 1
+
+	// QualityNormal normal quality.
+	QualityNormal
+
+	// QualitySmall worst quality.
+	QualitySmall
 )
+
+const (
+	slideSelector          = "img.slide_image"
+	imageURLSelectorFull   = "data-full"
+	imageURLSelectorNormal = "data-normal"
+	imageURLSelectorSmall  = "data-small"
+)
+
+func imageSelector(q Quality) string {
+	var selector string
+
+	switch q {
+	case QualityFull:
+		selector = imageURLSelectorFull
+	case QualityNormal:
+		selector = imageURLSelectorNormal
+	case QualitySmall:
+		selector = imageURLSelectorSmall
+	}
+	return selector
+}
 
 type defaultParser struct {
 }
 
-func (p *defaultParser) Images(r io.Reader) ([]string, error) {
+func (p *defaultParser) Images(r io.Reader, q Quality) ([]string, error) {
 	d, err := goquery.NewDocumentFromReader(r)
 
 	if err != nil {
@@ -31,7 +61,8 @@ func (p *defaultParser) Images(r io.Reader) ([]string, error) {
 	var urls []string
 
 	d.Find(slideSelector).Each(func(i int, s *goquery.Selection) {
-		if url, exists := s.Attr(imageURLSelector); exists {
+		selector := imageSelector(q)
+		if url, exists := s.Attr(selector); exists {
 			urls = append(urls, url)
 		}
 	})
