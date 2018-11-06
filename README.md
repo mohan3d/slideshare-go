@@ -9,9 +9,9 @@ $ go get github.com/mohan3d/slideshare-go
 
 ## Usage
 ```sh
-$ slideshare -url <slideshare_url> -path <path>
-$ slideshare -url <slideshare_url> -path <path> -quality <quality>
-$ slideshare --help
+$ slideshare-go -url <slideshare_url> -path <path>
+$ slideshare-go -url <slideshare_url> -path <path> -quality <quality>
+$ slideshare-go --help
 ```
 
 ## Examples
@@ -19,15 +19,15 @@ $ slideshare --help
 # download highest quality of 
 # https://www.slideshare.net/DeloitteUS/the-hospital-of-the-future-81817523
 # and save it to hospital.pdf 
-$ slideshare -url=https://www.slideshare.net/DeloitteUS/the-hospital-of-the-future-81817523 -path=./hospital.pdf -quality=high
+$ slideshare-go -url=https://www.slideshare.net/DeloitteUS/the-hospital-of-the-future-81817523 -path=./hospital.pdf -quality=high
 
 # download normal quality of 
 # https://www.slideshare.net/jeanbaptiste.dumont/the-ai-rush
 # and save it to ai_rush.pdf 
-$ slideshare -url=https://www.slideshare.net/jeanbaptiste.dumont/the-ai-rush -path=./ai_rush.pdf -quality=normal
+$ slideshare-go -url=https://www.slideshare.net/jeanbaptiste.dumont/the-ai-rush -path=./ai_rush.pdf -quality=normal
 
 # download lowest quality of 
 # https://www.slideshare.net/carologic/ai-and-machine-learning-demystified-by-carol-smith-at-midwest-ux-2017
 # and save it to ai.pdf 
-$ slideshare -url=https://www.slideshare.net/carologic/ai-and-machine-learning-demystified-by-carol-smith-at-midwest-ux-2017 -path=./ai.pdf -quality=low
+$ slideshare-go -url=https://www.slideshare.net/carologic/ai-and-machine-learning-demystified-by-carol-smith-at-midwest-ux-2017 -path=./ai.pdf -quality=low
 ```
