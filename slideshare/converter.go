@@ -13,7 +13,7 @@ import (
 // It may be empty based on the implementation.
 //
 // AddImage append new image to the pdf.
-// It returns any error encountered that caused save tp fail.
+// It returns any error encountered that caused save to fail.
 //
 // Save writes pdf content to an io.Writer.
 // It returns any error encountered that caused save to fail.
@@ -25,7 +25,7 @@ type Converter interface {
 
 func imageExtension(name string) string {
 	ext := filepath.Ext(name)
-	return ext[1:len(ext)]
+	return ext[1:]
 }
 
 // defaultConverter defaultConverter

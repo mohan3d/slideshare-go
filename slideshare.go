@@ -53,7 +53,7 @@ func main() {
 	flag.Parse()
 
 	if !(*url != "" && *path != "") {
-		fmt.Println("A valid slideshare url and save path must be provided\n")
+		fmt.Println("A valid slideshare url and save path must be provided")
 		flag.Usage()
 		os.Exit(1)
 	}
