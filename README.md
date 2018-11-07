@@ -1,4 +1,5 @@
 # slideshare-go
+[![GoDoc](https://godoc.org/github.com/mohan3d/slideshare-go?status.svg)](https://godoc.org/github.com/mohan3d/slideshare-go/slideshare)
 [![Go Report Card](https://goreportcard.com/badge/github.com/mohan3d/slideshare-go)](https://goreportcard.com/report/github.com/mohan3d/slideshare-go)    
 Golang package to download [slideshare](https://www.slideshare.net/) slides to pdf files.
 
