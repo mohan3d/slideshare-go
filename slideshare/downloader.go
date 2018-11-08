@@ -22,12 +22,9 @@ func (d *defaultDownloader) Fetch(w io.Writer, url string) error {
 		return err
 	}
 	defer resp.Body.Close()
-	_, err = io.Copy(w, resp.Body)
 
-	if err != nil {
-		return err
-	}
-	return nil
+	_, err = io.Copy(w, resp.Body)
+	return err
 }
 
 // DefaultDownloader used when no implementation

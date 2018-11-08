@@ -1,6 +1,7 @@
 package slideshare
 
 import (
+	"errors"
 	"io"
 
 	"github.com/PuerkitoBio/goquery"
@@ -35,6 +36,8 @@ const (
 	imageURLSelectorSmall  = "data-small"
 )
 
+var errNoImages = errors.New("parsing returns no images or error")
+
 func imageSelector(q Quality) string {
 	var selector string
 
@@ -66,6 +69,9 @@ func (p *defaultParser) Images(r io.Reader, q Quality) ([]string, error) {
 			urls = append(urls, url)
 		}
 	})
+	if len(urls) == 0 {
+		return nil, errNoImages
+	}
 	return urls, nil
 }
 
